@@ -1,0 +1,13 @@
+[Unit]
+Description=DeepCool AK500 Digital Pro Display Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ak500d
+ExecStop=/usr/local/bin/ak500d --off
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

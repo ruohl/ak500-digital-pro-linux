@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+ak500d
+*.exe
+.codegraph/
+.projectmem/
