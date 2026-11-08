@@ -19,9 +19,21 @@ sudo bash install.sh
 systemctl status ak500d.service
 sudo systemctl stop ak500d.service
 
+# Reset frozen USB port / hub without restarting:
+ak500-reset
+
 sudo /usr/local/bin/ak500d -interval 1s
 sudo /usr/local/bin/ak500d -off
 ```
+
+## Troubleshooting & USB Standby Voltage (ErP + Windows)
+
+If the display randomly does not turn on:
+1. **Linux**: Run `ak500-reset` (or `sudo bash ak500-reset.sh`). It cycles the stuck port (`state: default`), rebinds the internal hub, and restarts the service.
+2. **Windows**: Run `ak500-reset.ps1` in PowerShell as Admin.
+3. **ErP BIOS + Windows Fast Startup Conflict**:
+   - In BIOS, `ErP` must be set to `Enabled`.
+   - **Crucial**: In Windows, disable **Fast Startup** (`powercfg /h off` in Admin CMD). Windows Fast Startup puts the system in S4 (hybrid sleep) instead of S5, bypassing ErP and keeping 5V standby power on internal USB headers, leaving the microcontroller stuck on subsequent boots.
 
 ## Windows Usage
 

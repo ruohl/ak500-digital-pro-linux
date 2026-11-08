@@ -4,6 +4,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
+ExecStartPre=-/usr/local/bin/ak500-reset
 ExecStart=/usr/local/bin/ak500d
 ExecStop=/usr/local/bin/ak500d --off
 Restart=always

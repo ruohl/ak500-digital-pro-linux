@@ -9,6 +9,8 @@ else
     install -Dm755 ak500d.py /usr/local/bin/ak500d
 fi
 
+install -Dm755 ak500-reset.sh /usr/local/bin/ak500-reset
+install -Dm440 99-ak500-reset.sudoers /etc/sudoers.d/99-ak500-reset
 install -Dm644 99-deepcool-ak500.rules /etc/udev/rules.d/99-deepcool-ak500.rules
 install -Dm644 ak500d.service /etc/systemd/system/ak500d.service
 
